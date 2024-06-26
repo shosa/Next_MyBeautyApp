@@ -28,7 +28,7 @@ const Navbar = () => {
         </Link>
 
         {/* Link per gli Appuntamenti */}
-        <Link href="/calendar" className={`text-gray-500 transform transition-transform hover:scale-105 hover:text-indigo-600 focus:outline-none focus:text-indigo-600 text-2xl ${pathname === '/calendar' ? 'text-indigo-600' : ''}`}>
+        <Link href="/appointments" className={`text-gray-500 transform transition-transform hover:scale-105 hover:text-indigo-600 focus:outline-none focus:text-indigo-600 text-2xl ${pathname === '/calendar' ? 'text-indigo-600' : ''}`}>
           <FaCalendarAlt />
           <span className="sr-only">Appuntamenti</span>
         </Link>
