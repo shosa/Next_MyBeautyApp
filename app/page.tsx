@@ -3,10 +3,10 @@ import { FaUsers, FaSpa, FaCalendarAlt } from 'react-icons/fa';
 
 export default function Home() {
   return (
-    
     <main className="bg-white text-center p-4 min-h-screen">
       <h1 className="text-4xl font-bold mb-6">Benvenuto su MyBeautyAgenda</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
         {/* Card per gli Appuntamenti */}
         <Link href="/appointments">
@@ -15,6 +15,7 @@ export default function Home() {
             <h2 className="text-xl font-semibold mb-2 text-white">Appuntamenti</h2>
             <p className="text-gray-200 mb-4">Gestisci gli appuntamenti.</p>
           </div>
+
         </Link>
         {/* Card per i Servizi */}
         <Link href="/services">
@@ -33,6 +34,7 @@ export default function Home() {
           </div>
         </Link>
       </div>
+
     </main >
   );
 }

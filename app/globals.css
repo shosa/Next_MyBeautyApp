@@ -9,8 +9,7 @@ main {
 }
 
 main {
-  @apply flex flex-col items-center justify-center;
-  padding-top: 2rem;
+  padding: 5%;
 }
 
 h1 {
@@ -41,7 +40,7 @@ h1 {
   box-shadow: 0px -5px 15px rgba(139, 92, 246, 0.6);
 }
 
-nav{
+nav {
   padding-bottom: 8%;
   box-shadow: 0px -5px 12px rgba(139, 92, 246, 0.6);
 }
