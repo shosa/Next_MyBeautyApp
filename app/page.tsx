@@ -4,11 +4,13 @@ import { FaUsers, FaSpa, FaCalendarAlt } from 'react-icons/fa';
 
 export default function Home() {
   return (
+    
     <main className="bg-white text-center p-4 min-h-screen">
+      <Toolbar pageTitle='Home'/>
       <h1 className="text-4xl font-bold mb-6">Benvenuto su MyBeautyAgenda</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <Toolbar pageTitle='Home'/>
+      
         {/* Card per gli Appuntamenti */}
         <Link href="/appointments">
           <div className="relative overflow-hidden rounded-lg p-6 bg-gradient-to-br from-green-500 to-blue-600 shadow-lg transform transition-transform hover:scale-105 neon-green">

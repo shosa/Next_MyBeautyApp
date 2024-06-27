@@ -2,7 +2,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { FaPhone, FaWhatsapp } from 'react-icons/fa'; // Import delle icone di telefono e WhatsApp
-
+import Toolbar from '../../components/Toolbar';
 interface Client {
   id: number;
   name: string;
@@ -45,6 +45,7 @@ export default function ClientsList() {
 
   return (
     <main className="p-4">
+        <Toolbar pageTitle='Rubrica Clienti'/>
       <h1 className="text-2xl font-bold mb-4">Rubrica Clienti</h1>
       <ul className="space-y-4">
         {clients.map(client => (
