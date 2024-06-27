@@ -1,5 +1,6 @@
 // components/Toolbar.tsx
 'use client';
+// components/Toolbar.tsx
 import { useState } from 'react';
 import { FaPlus, FaCog, FaBell, FaUser } from 'react-icons/fa'; // Import delle icone
 
@@ -34,9 +35,9 @@ const Toolbar: React.FC<ToolbarProps> = ({ pageTitle, toolbarHeight = '64px', sh
           )}
           {/* Questo div contiene i pulsanti espansi */}
           <div
-            className={`absolute left-0 right-0 mt-2 flex flex-col items-center space-y-2 bg-white shadow-md p-2 rounded-md transform transition-transform duration-300 ease-in-out ${
-              expanded ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
-            }`}
+            className={`absolute left-0 right-10 mt-2 flex flex-col items-center space-y-2 p-2 rounded-md transform transition-transform duration-300 ease-in-out ${expanded ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+              }`}
+            style={{ top: 'calc(100% + 10px)', zIndex: 50 }}
           >
             <button className="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 text-gray-600 rounded-full hover:bg-gray-100 focus:outline-none">
               <FaCog className="text-lg" />
@@ -51,7 +52,9 @@ const Toolbar: React.FC<ToolbarProps> = ({ pageTitle, toolbarHeight = '64px', sh
         </div>
       </header>
       {expanded && (
-        <div className="fixed inset-0 bg-black bg-opacity-25 z-40" onClick={toggleExpand} />
+        <div className="fixed inset-0 z-40">
+          <div className="absolute inset-0 bg-black bg-opacity-5 backdrop-filter backdrop-blur" onClick={toggleExpand} />
+        </div>
       )}
     </>
   );
