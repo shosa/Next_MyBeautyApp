@@ -1,6 +1,5 @@
 // components/Toolbar.tsx
 'use client';
-// components/Toolbar.tsx
 import { useState } from 'react';
 import { FaPlus, FaCog, FaBell, FaUser } from 'react-icons/fa'; // Import delle icone
 
@@ -39,15 +38,31 @@ const Toolbar: React.FC<ToolbarProps> = ({ pageTitle, toolbarHeight = '64px', sh
               }`}
             style={{ top: 'calc(100% + 10px)', zIndex: 50 }}
           >
-            <button className="flex items-center justify-center w-10 h-10 bg-white border border-indigo-500 text-indigo-500 rounded-full hover:bg-indigo-500 hover:text-white focus:outline-none">
-              <FaCog className="text-lg" />
-            </button>
-            <button className="flex items-center justify-center w-10 h-10 bg-white border border-indigo-500 text-indigo-500 rounded-full hover:bg-indigo-500 hover:text-white  focus:outline-none">
-              <FaBell className="text-lg" />
-            </button>
-            <button className="flex items-center justify-center w-10 h-10 bg-white border border-indigo-500 text-indigo-500 rounded-full hover:bg-indigo-500 hover:text-white  focus:outline-none">
-              <FaUser className="text-lg" />
-            </button>
+            {/* Pulsante con etichetta */}
+            <div className="relative flex items-center group">
+              <span className="absolute left-[-100px] ml-2 px-2 py-1 text-sm text-white bg-indigo-500 rounded-md transition-opacity duration-300">
+                Nuovo
+              </span>
+              <button className="flex items-center justify-center w-10 h-10 bg-white border border-indigo-500 text-indigo-500 rounded-full hover:bg-indigo-500 hover:text-white focus:outline-none">
+                <FaCog className="text-xl" />
+              </button>
+            </div>
+            <div className="relative flex items-center group">
+              <span className="absolute left-[-100px] ml-2 px-2 py-1 text-sm text-white bg-indigo-500 rounded-md transition-opacity duration-300">
+                Opzioni
+              </span>
+              <button className="flex items-center justify-center w-10 h-10 bg-white border border-indigo-500 text-indigo-500 rounded-full hover:bg-indigo-500 hover:text-white focus:outline-none">
+                <FaBell className="text-lg" />
+              </button>
+            </div>
+            <div className="relative flex items-center group">
+              <span className="absolute left-[-100px] ml-2 px-2 py-1 text-sm text-white bg-indigo-500 rounded-md transition-opacity duration-300">
+                Cazzo
+              </span>
+              <button className="flex items-center justify-center w-10 h-10 bg-white border border-indigo-500 text-indigo-500 rounded-full hover:bg-indigo-500 hover:text-white focus:outline-none">
+                <FaUser className="text-lg" />
+              </button>
+            </div>
           </div>
         </div>
       </header>
