@@ -45,9 +45,9 @@ export default function ClientsList() {
   };
 
   return (
-    <main className="p-4">
-      <Toolbar pageTitle="Rubrica Clienti" />
-      <ul className="space-y-4" style={{ paddingTop: '64px' }}> {/* Adjust padding if toolbar height changes */}
+    <main className="p-1">
+      <Toolbar pageTitle="Rubrica Clienti"  showPlusButton={true} />
+      <ul className="space-y-2" style={{ paddingBottom: '100px' }}> {/* Adjust padding if Navbar height changes */}
         {clients.map(client => (
           <li key={client.id} className="p-4 bg-white shadow rounded-md flex justify-between items-center">
             <div>

@@ -10,7 +10,6 @@ main {
 
 main {
   margin-top:10%;
-
   padding: 5%;
 }
 
@@ -18,7 +17,6 @@ h1 {
   @apply text-4xl font-bold text-center mb-8;
 }
 
-/* Definisci le animazioni neon */
 
 
 /* Stili per l'effetto neon delle card */
@@ -36,6 +34,10 @@ h1 {
   box-shadow: 0 0 15px rgba(50, 205, 50, 0.5);
 
 }
+.neon-yellow {
+  box-shadow: 0 0 15px rgba(179, 157, 34, 0.5);
+
+}
 
 /* Cerchio di Home */
 .home-circle {
@@ -48,6 +50,24 @@ nav {
 }
 
 .pageTitle {
-  font-size: 20pt;
-  padding:5%;
+  font-size: 20pt; /* Mantiene la dimensione del font */
+  margin: 0; /* Rimuove margini verticali che potrebbero interferire con l'allineamento */
+  display: flex; /* Usa flex per allineare verticalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100%; /* Assicura che occupi l'intera altezza del genitore */
+}
+
+/* styles.css */
+.scale-100 {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.scale-0 {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.transition-transform {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
