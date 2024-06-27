@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { FaPhone, FaWhatsapp } from 'react-icons/fa'; // Import delle icone di telefono e WhatsApp
 import Toolbar from '../../components/Toolbar';
+
 interface Client {
   id: number;
   name: string;
@@ -45,9 +46,8 @@ export default function ClientsList() {
 
   return (
     <main className="p-4">
-        <Toolbar pageTitle='Rubrica Clienti'/>
-      <h1 className="text-2xl font-bold mb-4">Rubrica Clienti</h1>
-      <ul className="space-y-4">
+      <Toolbar pageTitle="Rubrica Clienti" />
+      <ul className="space-y-4" style={{ paddingTop: '64px' }}> {/* Adjust padding if toolbar height changes */}
         {clients.map(client => (
           <li key={client.id} className="p-4 bg-white shadow rounded-md flex justify-between items-center">
             <div>
@@ -57,20 +57,21 @@ export default function ClientsList() {
             <div className="flex items-center space-x-4">
               {client.phone && (
                 <button
-                  className="flex items-center justify-center w-10 h-10 bg-blue-500 rounded-full hover:bg-blue-600 focus:outline-none"
-                  onClick={() => handleCall(client.phone)}
+                  className="flex items-center justify-center w-10 h-10 bg-white border border-indigo-500 rounded-full hover:bg-indigo-100 focus:outline-none"
+                  onClick={() => handleWhatsApp(client.phone)}
                 >
-                  <FaPhone className="text-white text-xl" />
+                  <FaWhatsapp className="text-indigo-500 text-2xl" />
                 </button>
               )}
               {client.phone && (
                 <button
-                  className="flex items-center justify-center w-10 h-10 bg-green-500 rounded-full hover:bg-green-600 focus:outline-none"
-                  onClick={() => handleWhatsApp(client.phone)}
+                  className="flex items-center justify-center w-10 h-10 bg-white border border-indigo-500 rounded-full hover:bg-indigo-100 focus:outline-none"
+                  onClick={() => handleCall(client.phone)}
                 >
-                  <FaWhatsapp className="text-white text-xl" />
+                  <FaPhone className="text-indigo-500 text-xl" />
                 </button>
               )}
+
             </div>
           </li>
         ))}

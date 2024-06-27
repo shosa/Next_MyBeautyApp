@@ -5,9 +5,10 @@ import { FaPlus, FaCog, FaBell, FaUser } from 'react-icons/fa'; // Import delle 
 
 interface ToolbarProps {
   pageTitle: string;
+  toolbarHeight?: string; // Prop opzionale per determinare l'altezza della toolbar
 }
 
-const Toolbar: React.FC<ToolbarProps> = ({ pageTitle }) => {
+const Toolbar: React.FC<ToolbarProps> = ({ pageTitle, toolbarHeight = '64px' }) => {
   const [expanded, setExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -15,8 +16,8 @@ const Toolbar: React.FC<ToolbarProps> = ({ pageTitle }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md p-4 flex items-center justify-between">
-      <h1 className="pageTitle font-bold">{pageTitle}</h1>
+    <header className={`fixed top-0 left-0 right-0 z-50 bg-white shadow-md p-4 flex items-center justify-between`} style={{ height: toolbarHeight }}>
+      <h1 className="text-xl font-bold">{pageTitle}</h1>
       <div className="flex items-center space-x-4">
         <button
           className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full hover:bg-gray-300 focus:outline-none"
