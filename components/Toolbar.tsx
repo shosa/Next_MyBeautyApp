@@ -27,7 +27,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ pageTitle, toolbarHeight = '64px', sh
         <div className="flex items-center space-x-4 relative">
           {showPlusButton && (
             <button
-              className="flex items-center justify-center w-10 h-10 bg-white border border-indigo-500 text-indigo-500 rounded-full hover:bg-indigo-50 focus:outline-none"
+              className="flex items-center justify-center w-10 h-10 bg-white border border-indigo-500 text-indigo-500 rounded-full hover:bg-indigo-500 hover:text-white focus:outline-none"
               onClick={toggleExpand}
             >
               <FaPlus className="text-lg" />
@@ -39,13 +39,13 @@ const Toolbar: React.FC<ToolbarProps> = ({ pageTitle, toolbarHeight = '64px', sh
               }`}
             style={{ top: 'calc(100% + 10px)', zIndex: 50 }}
           >
-            <button className="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 text-gray-600 rounded-full hover:bg-gray-100 focus:outline-none">
+            <button className="flex items-center justify-center w-10 h-10 bg-white border border-indigo-500 text-indigo-500 rounded-full hover:bg-indigo-500 hover:text-white focus:outline-none">
               <FaCog className="text-lg" />
             </button>
-            <button className="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 text-gray-600 rounded-full hover:bg-gray-100 focus:outline-none">
+            <button className="flex items-center justify-center w-10 h-10 bg-white border border-indigo-500 text-indigo-500 rounded-full hover:bg-indigo-500 hover:text-white  focus:outline-none">
               <FaBell className="text-lg" />
             </button>
-            <button className="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 text-gray-600 rounded-full hover:bg-gray-100 focus:outline-none">
+            <button className="flex items-center justify-center w-10 h-10 bg-white border border-indigo-500 text-indigo-500 rounded-full hover:bg-indigo-500 hover:text-white  focus:outline-none">
               <FaUser className="text-lg" />
             </button>
           </div>
