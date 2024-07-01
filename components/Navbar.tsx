@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FaUsers, FaSpa, FaCalendarAlt, FaInfoCircle, FaHome } from 'react-icons/fa';
+import { FaUsers, FaSpa, FaCalendarAlt, FaInfoCircle, FaHome , FaBookOpen, FaSearch} from 'react-icons/fa';
 
 
 const Navbar = () => {
@@ -28,14 +28,14 @@ const Navbar = () => {
         </Link>
 
         {/* Link per gli Appuntamenti */}
-        <Link href="/appointments" className={`text-gray-500 transform transition-transform hover:scale-150 hover:text-indigo-600 focus:outline-none focus:text-indigo-600 text-2xl ${pathname === '/calendar' ? 'text-indigo-600' : ''}`}>
+        <Link href="/agenda" className={`text-gray-500 transform transition-transform hover:scale-150 hover:text-indigo-600 focus:outline-none focus:text-indigo-600 text-2xl ${pathname === '/agenda' ? 'text-indigo-600' : ''}`}>
           <FaCalendarAlt />
           <span className="sr-only">Appuntamenti</span>
         </Link>
 
         {/* Link per Altro */}
-        <Link href="/info" className={`text-gray-500 transform transition-transform hover:scale-150 hover:text-indigo-600 focus:outline-none focus:text-indigo-600 text-xl ${pathname === '/anotherPage' ? 'text-indigo-600' : ''}`}>
-          <FaInfoCircle />
+        <Link href="/searc" className={`text-gray-500 transform transition-transform hover:scale-150 hover:text-indigo-600 focus:outline-none focus:text-indigo-600 text-xl ${pathname === '/search' ? 'text-indigo-600' : ''}`}>
+          <FaSearch />
           <span className="sr-only">Altro</span>
         </Link>
 

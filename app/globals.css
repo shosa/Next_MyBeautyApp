@@ -3,13 +3,10 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Nunito');
 
-body {
-  font-family: 'Nunito', sans-serif;
-}
-
 html,
 body,
 main {
+  
   height: 100%;
 }
 

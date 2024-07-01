@@ -47,7 +47,7 @@ const EditAppointmentModal = ({ appointment, isOpen, onClose, onSave }: EditAppo
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-grey p-10 bg-opacity-20  backdrop-filter backdrop-blur flex items-center justify-center z-50 ">
+    <div className="fixed inset-0 bg-black p-10 bg-opacity-20  backdrop-filter backdrop-blur flex items-center justify-center z-50 ">
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
         <h2 className="text-xl font-semibold mb-4">Modifica Appuntamento</h2>
         <div className="mb-4">
