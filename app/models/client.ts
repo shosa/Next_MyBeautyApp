@@ -1,8 +1,15 @@
-// app/models/client.ts
-import { DataTypes } from 'sequelize';
+// models/client.ts
+import { DataTypes, Model } from 'sequelize';
 import sequelize from '../db';
 
-const Client = sequelize.define('Client', {
+class Client extends Model {
+  public id!: number;
+  public name!: string;
+  public email?: string;
+  public phone?: string;
+}
+
+Client.init({
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -17,8 +24,9 @@ const Client = sequelize.define('Client', {
     allowNull: true,
   },
 }, {
-  timestamps: false,
+  sequelize,
   tableName: 'clients',
+  timestamps: false,
 });
 
 export default Client;

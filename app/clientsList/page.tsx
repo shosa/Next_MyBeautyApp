@@ -16,7 +16,7 @@ export default function ClientsList() {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await fetch('/clientsList/api');
+        const response = await fetch('/api/clients');
         if (response.ok) {
           const data = await response.json();
           setClients(data);
