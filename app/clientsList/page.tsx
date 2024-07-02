@@ -1,7 +1,7 @@
 // app/clientsList/page.tsx
 'use client';
 import { useEffect, useState } from 'react';
-import { FaPhone, FaWhatsapp } from 'react-icons/fa'; // Import delle icone di telefono e WhatsApp
+import { FaPhone, FaPlus, FaWhatsapp } from 'react-icons/fa'; // Import delle icone di telefono e WhatsApp
 import Toolbar from '../../components/Toolbar';
 
 interface Client {
@@ -46,7 +46,11 @@ export default function ClientsList() {
 
   return (
     <main className="p-1">
-      <Toolbar pageTitle="Rubrica Clienti"  showPlusButton={true} />
+      <Toolbar pageTitle="Elenco Servizi" showPlusButton={true} buttons={[
+        {
+          icon: <FaPlus />,
+          text: 'AGGIUNGI NUOVO',
+        },]} />
       <ul className="space-y-2" style={{ paddingBottom: '100px' }}> {/* Adjust padding if Navbar height changes */}
         {clients.map(client => (
           <li key={client.id} className="p-4 bg-white shadow rounded-md flex justify-between items-center">

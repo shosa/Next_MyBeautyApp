@@ -12,9 +12,9 @@ export default function Home() {
         {/* Card per gli Appuntamenti */}
         <Link href="/appointments">
           <div className="relative overflow-hidden rounded-lg p-6 bg-gradient-to-br from-green-500 to-blue-600 shadow-lg transform transition-transform hover:scale-105 neon-green">
-            <FaCalendarAlt className="absolute left-0 top-0 -translate-x-1/3 text-9xl text-white opacity-20" />
-            <h2 className="text-xl font-semibold mb-2 text-white">Appuntamenti</h2>
-            <p className="text-gray-200 mb-4">Gestisci gli appuntamenti.</p>
+            <FaBookOpen className="absolute left-0 top-0 -translate-x-1/3 text-9xl text-white opacity-20" />
+            <h2 className="text-xl font-semibold mb-2 text-white">Nuovo Appuntamento</h2>
+            <p className="text-gray-200 mb-4">Inserisci un nuovo appuntamento</p>
           </div>
 
         </Link>
@@ -37,9 +37,9 @@ export default function Home() {
 
         <Link href="/agenda">
           <div className="relative overflow-hidden rounded-lg p-6 bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-lg transform transition-transform hover:scale-105 neon-yellow">
-            <FaBookOpen className="absolute left-0 top-0 -translate-x-1/3 text-9xl text-white opacity-20" />
+            <FaCalendarAlt className="absolute left-0 top-0 -translate-x-1/3 text-9xl text-white opacity-20" />
             <h2 className="text-xl font-semibold mb-2 text-white">Agenda</h2>
-            <p className="text-gray-200 mb-4">Controlla l'agenda.</p>
+            <p className="text-gray-200 mb-4">Controlla l&apos;agenda.</p>
           </div>
         </Link>
       </div>

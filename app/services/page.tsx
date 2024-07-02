@@ -2,7 +2,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Toolbar from '../../components/Toolbar';
-import { FaTrash, FaEdit } from 'react-icons/fa';
+import { FaTrash, FaPlus, FaEdit } from 'react-icons/fa';
 
 interface Service {
   id: number;
@@ -52,9 +52,13 @@ export default function Services() {
 
   return (
     <main className="p-1">
-      <Toolbar pageTitle="Servizi" showPlusButton={true} />
+      <Toolbar pageTitle="Elenco Servizi" showPlusButton={true} buttons={[
+        {
+          icon: <FaPlus />,
+          text: 'AGGIUNGI NUOVO',
+        },]} />
       {isLoading ? (
-        <p>Loading...</p>
+        <p>Caricamento...</p>
       ) : (
         <ul className="space-y-2" style={{ paddingBottom: '100px' }}>
           {services.map(service => (
