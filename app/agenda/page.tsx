@@ -12,7 +12,7 @@ export default function AgendaPage() {
   const [currentView, setCurrentView] = useState<'today' | 'agenda' | 'weekly' | 'monthly'>('today');
   const [currentDate, setCurrentDate] = useState(new Date());
 
-  const handleViewChange = (view: 'agenda' | 'weekly' | 'monthly') => {
+  const handleViewChange = (view: 'today' | 'agenda' | 'weekly' | 'monthly') => {
     setCurrentView(view);
   };
 
