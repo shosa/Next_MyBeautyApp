@@ -1,104 +1,91 @@
 // components/EditAppointmentModal.tsx
-import { useState, useEffect } from 'react';
-
-interface EditAppointmentModalProps {
-  appointment: Appointment | null;
-  isOpen: boolean;
-  onClose: () => void;
-  onSave: (updatedAppointment: Appointment) => void;
-}
+import React, { useState } from 'react';
 
 interface Appointment {
   id: number;
-  client_id: number;
-  service_id: number;
+  client: { name: string } | null;
+  service: { name: string } | null;
   appointment_datetime: string;
   notes: string | null;
 }
 
-const EditAppointmentModal = ({ appointment, isOpen, onClose, onSave }: EditAppointmentModalProps) => {
-  const [client, setClient] = useState<number | null>(appointment?.client_id || null);
-  const [service, setService] = useState<number | null>(appointment?.service_id || null);
-  const [appointmentDatetime, setAppointmentDatetime] = useState<string>(appointment?.appointment_datetime || '');
-  const [notes, setNotes] = useState<string>(appointment?.notes || '');
+interface EditAppointmentModalProps {
+  appointment: Appointment;
+  onClose: () => void;
+  onUpdate: (updatedAppointment: Appointment) => void;
+}
 
-  useEffect(() => {
-    if (appointment) {
-      setClient(appointment.client_id);
-      setService(appointment.service_id);
-      setAppointmentDatetime(appointment.appointment_datetime);
-      setNotes(appointment.notes || '');
-    }
-  }, [appointment]);
+const EditAppointmentModal = ({ appointment, onClose, onUpdate }: EditAppointmentModalProps) => {
+  const [updatedAppointment, setUpdatedAppointment] = useState(appointment);
 
-  const handleSave = () => {
-    if (client && service && appointmentDatetime) {
-      onSave({
-        id: appointment?.id || 0,
-        client_id: client,
-        service_id: service,
-        appointment_datetime: appointmentDatetime,
-        notes,
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setUpdatedAppointment(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch(`/api/appointments?id=${updatedAppointment.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedAppointment),
       });
-      onClose();
+
+      if (response.ok) {
+        const updatedData = await response.json();
+        onUpdate(updatedData);
+      } else {
+        console.error('Failed to update appointment');
+      }
+    } catch (error) {
+      console.error('Error updating appointment:', error);
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 bg-black p-10 bg-opacity-20  backdrop-filter backdrop-blur flex items-center justify-center z-50 ">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-        <h2 className="text-xl font-semibold mb-4">Modifica Appuntamento</h2>
-        <div className="mb-4">
-          <label className="block mb-1">Cliente</label>
-          <input
-            type="number"
-            value={client ?? ''}
-            onChange={(e) => setClient(Number(e.target.value))}
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block mb-1">Servizio</label>
-          <input
-            type="number"
-            value={service ?? ''}
-            onChange={(e) => setService(Number(e.target.value))}
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block mb-1">Data e Ora</label>
-          <input
-            type="datetime-local"
-            value={appointmentDatetime}
-            onChange={(e) => setAppointmentDatetime(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block mb-1">Note</label>
-          <textarea
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-        </div>
-        <div className="flex justify-end space-x-4">
-          <button
-            className="bg-red-500 text-white px-4 py-2 rounded"
-            onClick={onClose}
-          >
-            Annulla
-          </button>
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded"
-            onClick={handleSave}
-          >
-            Salva
-          </button>
-        </div>
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="bg-white p-4 rounded-md shadow-lg w-80">
+        <h2 className="text-xl mb-4">Modifica Appuntamento</h2>
+        <input
+          type="text"
+          name="clientName"
+          value={updatedAppointment.client?.name || ''}
+          onChange={handleChange}
+          placeholder="Nome Cliente"
+          className="w-full mb-2 p-2 border rounded"
+        />
+        <input
+          type="text"
+          name="serviceName"
+          value={updatedAppointment.service?.name || ''}
+          onChange={handleChange}
+          placeholder="Servizio"
+          className="w-full mb-2 p-2 border rounded"
+        />
+        <textarea
+          name="notes"
+          value={updatedAppointment.notes || ''}
+          onChange={handleChange}
+          placeholder="Note"
+          className="w-full mb-2 p-2 border rounded"
+        ></textarea>
+        <button
+          onClick={handleSubmit}
+          className="w-full bg-emerald-600 text-white p-2 rounded-md"
+        >
+          Salva
+        </button>
+        <button
+          onClick={onClose}
+          className="w-full mt-2 p-2 border rounded-md"
+        >
+          Annulla
+        </button>
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
   buttons = [],
 }) => {
   const [expanded, setExpanded] = useState(false);
-  const menuRef = useRef(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleExpand = () => {
     setExpanded((prevExpanded) => !prevExpanded);

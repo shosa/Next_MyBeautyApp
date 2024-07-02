@@ -1,8 +1,8 @@
-// app/api/appointments/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import Appointment from '@/models/appointment';
 import Client from '@/models/client';
 import Service from '@/models/service';
+
 // GET /api/appointments - Get all appointments
 export async function GET(req: NextRequest) {
     try {
@@ -41,6 +41,7 @@ export async function POST(req: NextRequest) {
         const appointment = await Appointment.create(data);
         return NextResponse.json(appointment, { status: 201 });
     } catch (error) {
+        console.error('Errore nella creazione dell\'appuntamento:', error);
         return NextResponse.json({ error: 'Failed to create appointment' }, { status: 500 });
     }
 }
@@ -48,6 +49,9 @@ export async function POST(req: NextRequest) {
 // PUT /api/appointments/:id - Update an existing appointment
 export async function PUT(req: NextRequest) {
     const id = req.nextUrl.searchParams.get('id');
+    if (!id) {
+        return NextResponse.json({ error: 'ID è richiesto' }, { status: 400 });
+    }
     try {
         const data = await req.json();
         const appointment = await Appointment.findByPk(id);
@@ -57,6 +61,7 @@ export async function PUT(req: NextRequest) {
         await appointment.update(data);
         return NextResponse.json(appointment);
     } catch (error) {
+        console.error('Errore nell\'aggiornamento dell\'appuntamento:', error);
         return NextResponse.json({ error: 'Failed to update appointment' }, { status: 500 });
     }
 }
@@ -64,6 +69,9 @@ export async function PUT(req: NextRequest) {
 // DELETE /api/appointments/:id - Delete an appointment
 export async function DELETE(req: NextRequest) {
     const id = req.nextUrl.searchParams.get('id');
+    if (!id) {
+        return NextResponse.json({ error: 'ID è richiesto' }, { status: 400 });
+    }
     try {
         const appointment = await Appointment.findByPk(id);
         if (!appointment) {
@@ -72,6 +80,7 @@ export async function DELETE(req: NextRequest) {
         await appointment.destroy();
         return NextResponse.json({ message: 'Appointment deleted' });
     } catch (error) {
+        console.error('Errore nella cancellazione dell\'appuntamento:', error);
         return NextResponse.json({ error: 'Failed to delete appointment' }, { status: 500 });
     }
 }

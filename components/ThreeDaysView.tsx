@@ -1,9 +1,9 @@
-// components/ThreeDaysView.tsx
 import { useEffect, useState } from 'react';
 import { format, addDays, startOfToday } from 'date-fns';
 import { it } from 'date-fns/locale';
 import { FaEllipsisV, FaWhatsapp, FaEdit, FaTrash } from 'react-icons/fa'; // Import delle icone
 import EditAppointmentModal from './EditAppointmentModal';
+
 
 interface Appointment {
   id: number;
@@ -56,7 +56,7 @@ const ThreeDaysView = ({ currentDate, onDateChange }: ThreeDaysViewProps) => {
 
   const handleDeleteClick = async (appointmentId: number) => {
     try {
-      const response = await fetch(`/api/appointments/${appointmentId}`, {
+      const response = await fetch(`/api/appointments?id=${appointmentId}`, {
         method: 'DELETE',
       });
 
@@ -90,7 +90,7 @@ const ThreeDaysView = ({ currentDate, onDateChange }: ThreeDaysViewProps) => {
   };
 
   const handleWhatsAppClick = (clientName: string | null) => {
-    const message = `Ciao ${clientName ? clientName : 'cliente'}, ti ricordiamo che hai un appuntamento nei prossimi giorni.`;
+    const message = `Ciao ${clientName || 'cliente'}, ti ricordiamo che hai un appuntamento nei prossimi giorni.`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     setMenuOpen(null); // Chiudi il menu dopo aver cliccato
@@ -119,7 +119,7 @@ const ThreeDaysView = ({ currentDate, onDateChange }: ThreeDaysViewProps) => {
             {menuOpen === appointment.id && (
               <div className="absolute top-10 right-2 bg-white border rounded shadow-lg z-50 p-2 w-40 flex flex-col space-y-1 backdrop-filter backdrop-blur-lg">
                 <button
-                  onClick={() => handleWhatsAppClick(appointment.client?.name)}
+                  onClick={() => handleWhatsAppClick(appointment.client?.name || null)}
                   className="flex items-center space-x-2 px-2 py-1 hover:bg-gray-100"
                 >
                   <FaWhatsapp className="text-green-500" />

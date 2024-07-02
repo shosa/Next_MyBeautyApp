@@ -1,4 +1,3 @@
-// app/api/clients/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import Client from '@/models/client';
 
@@ -41,6 +40,9 @@ export async function POST(req: NextRequest) {
 // PUT /api/clients/:id - Aggiorna un cliente esistente
 export async function PUT(req: NextRequest) {
   const id = req.nextUrl.searchParams.get('id');
+  if (!id) {
+    return NextResponse.json({ error: 'ID è richiesto' }, { status: 400 });
+  }
   try {
     const data = await req.json();
     const client = await Client.findByPk(id);
@@ -58,6 +60,9 @@ export async function PUT(req: NextRequest) {
 // DELETE /api/clients/:id - Elimina un cliente
 export async function DELETE(req: NextRequest) {
   const id = req.nextUrl.searchParams.get('id');
+  if (!id) {
+    return NextResponse.json({ error: 'ID è richiesto' }, { status: 400 });
+  }
   try {
     const client = await Client.findByPk(id);
     if (!client) {
